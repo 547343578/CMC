@@ -1,0 +1,1543 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     69625,       1535]
+NotebookOptionsPosition[     67655,       1493]
+NotebookOutlinePosition[     67999,       1508]
+CellTagsIndexPosition[     67956,       1505]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Pr\[AAcute]ctica 2 sesi\[OAcute]n 1", "Title",
+ CellChangeTimes->{{3.8311872916079288`*^9, 3.831187292042951*^9}, 
+   3.831193437770745*^9},ExpressionUUID->"47530844-c130-4deb-bcf4-\
+3896841e971c"],
+
+Cell["\<\
+Alumnos :
+    David Laseca P\[EAcute]rez
+     Zhuqing Wang\
+\>", "Section",
+ CellChangeTimes->{{3.831187294361697*^9, 3.831187294947797*^9}, 
+   3.8311934308061333`*^9},ExpressionUUID->"d7535be3-4529-464f-9e64-\
+3945863bcdd9"],
+
+Cell[CellGroupData[{
+
+Cell["EJERCICIO", "Section",
+ CellChangeTimes->{{3.831187216838708*^9, 3.8311872168436947`*^9}, {
+   3.8311874439057016`*^9, 3.831187450805478*^9}, 
+   3.8311934256031294`*^9},ExpressionUUID->"65dc89fe-5751-4141-8301-\
+9e487e864033"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Dise\[NTilde]e un m\[OAcute]dulo Mathematica que, tomando como entrada los \
+siguientes par\[AAcute]metros, nos proporcione como salida la simulaci\
+\[OAcute]n del AC unidimensional correspondiente.\
+\>", "Subsection",
+ CellChangeTimes->{{3.831187267883641*^9, 3.8311872678943844`*^9}, {
+   3.831187478733229*^9, 3.8311875090141077`*^9}, 
+   3.831193420609537*^9},ExpressionUUID->"9a761e7d-8294-4376-ad3e-\
+1d91667981d5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AC", "[", 
+   RowBox[{"Inicial_List", ",", "Regla_Integer", ",", "t_Integer"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"expr", ",", "graphs", ",", "regla", ",", "aux", ",", "i"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "En", " ", "primer", " ", "lugar", " ", "se", " ", "genera", " ", "una", 
+      " ", "lista", " ", "donde", " ", "se", " ", "almacenar\[AAcute]n", " ", 
+      "las", " ", "configuraciones", " ", "y", " ", "otro", " ", "donde", " ",
+       "se", " ", "almacenar\[AAcute]n", " ", "las", " ", 
+      "gr\[AAcute]ficas"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"expr", "=", 
+      RowBox[{"{", "Inicial", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"graphs", "=", 
+      RowBox[{"{", 
+       RowBox[{"ArrayPlot", "[", 
+        RowBox[{"{", 
+         RowBox[{"expr", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "}"}], "]"}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Se", " ", "calcula", " ", "una", " ", "\[UAcute]nica", " ", "vez", " ",
+        "la", " ", "lista", " ", "correspondiente", " ", "al", " ", 
+       "n\[UAcute]mero", " ", "de", " ", "la", " ", "regla"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"regla", " ", "=", 
+      RowBox[{"WolframNumToList", "[", "Regla", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", "t"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Se", " ", "calculan", " ", "las", " ", "configuraciones", " ", 
+         "deseadas", " ", "y", " ", "sus", " ", "gr\[AAcute]ficas"}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"expr", ",", 
+          RowBox[{"NextConfig", "[", 
+           RowBox[{
+            RowBox[{"expr", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "regla"}], "]"}]}], "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"graphs", ",", 
+          RowBox[{"ArrayPlot", "[", "expr", "]"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Finalmente", " ", "se", " ", "representa", " ", "la", " ", 
+       "evoluci\[OAcute]n", " ", "del", " ", "aut\[OAcute]mata"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"ListAnimate", "[", "graphs", "]"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8310141435869665`*^9, 3.8310141483760023`*^9}, {
+  3.8310163041752214`*^9, 3.831016322218541*^9}, {3.8310166315512342`*^9, 
+  3.8310166383765764`*^9}, {3.8310166734244795`*^9, 3.8310168085003643`*^9}, {
+  3.8310168476746335`*^9, 3.831016850486959*^9}, {3.831017842198456*^9, 
+  3.8310178474578943`*^9}, {3.8310178944921527`*^9, 3.831017928933196*^9}, {
+  3.8310179704574957`*^9, 3.8310181061753693`*^9}, {3.8310182103176765`*^9, 
+  3.8310182128671503`*^9}, {3.831177901256833*^9, 3.831177914039961*^9}, {
+  3.8311779741316295`*^9, 3.8311781068498755`*^9}, {3.8311781740283065`*^9, 
+  3.8311782008554935`*^9}, {3.8311782990413017`*^9, 3.831178331220194*^9}, {
+  3.831178421769014*^9, 3.831178533919369*^9}, {3.831178619015993*^9, 
+  3.8311786518762016`*^9}, {3.831187900309993*^9, 3.8311880326445837`*^9}, {
+  3.8311880904911933`*^9, 
+  3.8311881506238375`*^9}},ExpressionUUID->"7c16aa9c-34d2-4823-a2fc-\
+35535ff398f6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AC", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", 
+      "0", ",", "1"}], "}"}], ",", "54", ",", "20"}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Ejemplo", " ", "de", " ", "funcionamiento", " ", "con", " ", "la", " ", 
+    "regla", " ", "54"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8310181138318725`*^9, 3.831018156040577*^9}, {
+  3.831178563247779*^9, 3.8311785916751747`*^9}, {3.8311786355636625`*^9, 
+  3.8311786357573605`*^9}, {3.8311873964888268`*^9, 3.831187396740111*^9}, {
+  3.8311891932162685`*^9, 
+  3.831189208322654*^9}},ExpressionUUID->"da655f31-b0c8-4179-b80f-\
+fa41b1b1262e"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`i16$$ = 6, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {
+    "\"min\"" :> {$CellContext`i16$$ = 1}, 
+     "\"max\"" :> {$CellContext`i16$$ = 21}}, Typeset`bookmarkMode$$ = "Menu",
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`i16$$], 1, ""}, 1, 21, 1}}, Typeset`size$$ = 
+    Automatic, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`i16$12840$$ = 0}, 
+    PaneBox[
+     PanelBox[
+      DynamicWrapperBox[GridBox[{
+         {
+          ItemBox[
+           ItemBox[
+            TagBox[
+             StyleBox[GridBox[{
+                {"\<\"\"\>", 
+                 AnimatorBox[Dynamic[$CellContext`i16$$], {1, 21, 1},
+                  AnimationRate->4.200000000000003,
+                  AnimationRunTime->429.7416868209839,
+                  AnimationTimeIndex->1.1723086266307519`,
+                  
+                  AppearanceElements->{
+                   "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons",
+                     "DirectionButton"},
+                  AutoAction->False,
+                  DisplayAllSteps->True]}
+               },
+               AutoDelete->False,
+               
+               GridBoxAlignment->{
+                "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
+                 "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+               
+               GridBoxItemSize->{
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+              "ListAnimateLabel",
+              StripOnInput->False],
+             {"ControlArea", Top}],
+            Alignment->{Automatic, Inherited},
+            StripOnInput->False],
+           Background->None,
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            StyleBox[
+             PaneBox[
+              TagBox[
+               PaneSelectorBox[{1->
+                GraphicsBox[
+                 RasterBox[{{0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 1}}, {
+                  0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 2->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0,
+                   1, 0}}, {{0, 0}, {9, 2}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 3->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0,
+                   0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 3}}, {0, 
+                  1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 4->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 
+                  1, 0}}, {{0, 0}, {9, 4}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 5->
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1,
+                   0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 
+                  0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 5}}, {0, 
+                  1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 6->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0,
+                   0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1,
+                   0}}, {{0, 0}, {9, 6}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 7->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1,
+                   1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 
+                  0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0,
+                   1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 7}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 8->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0,
+                   1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 
+                  0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 8}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 9->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1,
+                   0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 
+                  1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0,
+                   1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 9}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 10->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0,
+                   0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 
+                  1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0,
+                   0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 10}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 11->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1,
+                   1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 
+                  0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1,
+                   1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 11}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 12->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0,
+                   1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 
+                  0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1,
+                   1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 12}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 13->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1,
+                   0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 
+                  1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0,
+                   1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 13}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 14->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0,
+                   0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 
+                  1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0,
+                   0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 14}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 15->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1,
+                   1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 
+                  0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1,
+                   1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 15}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 16->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0,
+                   1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 
+                  0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1,
+                   1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 16}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 17->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1,
+                   0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 
+                  1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0,
+                   1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 17}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 18->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0,
+                   0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 
+                  1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0,
+                   0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 18}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 19->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1,
+                   1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 
+                  0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1,
+                   1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 19}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 20->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0,
+                   1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 
+                  0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1,
+                   1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 
+                  1}, {1, 1, 1, 0, 1, 0, 1, 1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 
+                  0}, {1, 0, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 20}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 21->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1,
+                   0, 1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 
+                  1, 1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0,
+                   1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {1, 1, 0, 0, 0, 0, 0, 1, 1}, {1, 1, 1, 0, 1, 0, 1, 1, 
+                  1}, {0, 0, 0, 1, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0, 
+                  1}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 21}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}]}, Dynamic[$CellContext`i16$$],
+                Alignment->Automatic,
+                BaseStyle->"ListAnimateCore",
+                ImageSize->All,
+                TransitionDirection->Horizontal,
+                TransitionDuration->0.5,
+                TransitionEffect->Automatic],
+               Identity,
+               Editable->True,
+               Selectable->True],
+              ImageMargins->10],
+             Deployed->False,
+             StripOnInput->False,
+             ScriptLevel->0,
+             GraphicsBoxOptions->{PreserveImageOptions->True},
+             Graphics3DBoxOptions->{PreserveImageOptions->True}],
+            Identity,
+            Editable->False,
+            Selectable->False],
+           Alignment->{Left, Center},
+           Background->GrayLevel[1],
+           Frame->1,
+           FrameStyle->GrayLevel[0, 0.2],
+           ItemSize->Automatic,
+           StripOnInput->False]}
+        },
+        AutoDelete->False,
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Top}}, 
+          "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+          "RowsIndexed" -> {}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.7], {
+             Offset[0.5599999999999999]}, 
+            Offset[0.7]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.4], {
+             Offset[0.8]}, 
+            Offset[0.4]}, "RowsIndexed" -> {}}], If[
+        And[
+         CurrentValue["NotebookSelected"], 
+         CurrentValue["SelectionOver"]], 
+        Manipulate`Dump`ReadControllerState[
+         Map[Manipulate`Dump`updateOneVar[#, 
+           CurrentValue["PreviousFormatTime"], 
+           CurrentValue["CurrentFormatTime"]]& , {
+           
+           Manipulate`Dump`controllerLink[{$CellContext`i16$$, \
+$CellContext`i16$12840$$}, "X1", 
+            If["DefaultAbsolute", True, "JB1"], False, {1, 21, 1}, 21, 1.]}], 
+         CurrentValue[{
+          "ControllerData", {
+           "Gamepad", "Joystick", "Multi-Axis Controller"}}], {}]],
+       ImageSizeCache->{391., {242.25, 248.25}}],
+      DefaultBaseStyle->{},
+      FrameMargins->{{5, 5}, {5, 5}}],
+     BaselinePosition->Automatic,
+     ImageMargins->0],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "ListAnimate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Print",
+ CellChangeTimes->{{3.8311786262456665`*^9, 3.831178637292058*^9}, 
+   3.831187397643735*^9, 
+   3.8311887572576666`*^9},ExpressionUUID->"ef718431-213b-4fcd-a454-\
+6eaac81d1c81"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AC", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", 
+      "0", ",", "1"}], "}"}], ",", "100", ",", "20"}], "]"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Ejemplo", " ", "de", " ", "funcionamiento", " ", "con", " ", "la", " ", 
+    "regla", " ", "100"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8311891235364103`*^9, 3.8311891563002377`*^9}, {
+  3.831189212907874*^9, 
+  3.8311892443111367`*^9}},ExpressionUUID->"53ba9877-b088-498c-b446-\
+b76c613ca9e1"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`i19$$ = 4, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {
+    "\"min\"" :> {$CellContext`i19$$ = 1}, 
+     "\"max\"" :> {$CellContext`i19$$ = 21}}, Typeset`bookmarkMode$$ = "Menu",
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`i19$$], 1, ""}, 1, 21, 1}}, Typeset`size$$ = 
+    Automatic, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`i19$14785$$ = 0}, 
+    PaneBox[
+     PanelBox[
+      DynamicWrapperBox[GridBox[{
+         {
+          ItemBox[
+           ItemBox[
+            TagBox[
+             StyleBox[GridBox[{
+                {"\<\"\"\>", 
+                 AnimatorBox[Dynamic[$CellContext`i19$$], {1, 21, 1},
+                  AnimationRate->Automatic,
+                  AnimationRunTime->427.8666000366211,
+                  AnimationTimeIndex->0.9523809523809526,
+                  
+                  AppearanceElements->{
+                   "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons",
+                     "DirectionButton"},
+                  AutoAction->False,
+                  DisplayAllSteps->True]}
+               },
+               AutoDelete->False,
+               
+               GridBoxAlignment->{
+                "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
+                 "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+               
+               GridBoxItemSize->{
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+              "ListAnimateLabel",
+              StripOnInput->False],
+             {"ControlArea", Top}],
+            Alignment->{Automatic, Inherited},
+            StripOnInput->False],
+           Background->None,
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            StyleBox[
+             PaneBox[
+              TagBox[
+               PaneSelectorBox[{1->
+                GraphicsBox[
+                 RasterBox[{{0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 1}}, {
+                  0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 2->
+                
+                GraphicsBox[
+                 RasterBox[{{0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0,
+                   1, 0}}, {{0, 0}, {9, 2}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 3->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0,
+                   0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 3}}, {0, 
+                  1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 4->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 
+                  1, 0}}, {{0, 0}, {9, 4}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 5->
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 
+                  0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 5}}, {0, 
+                  1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 6->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1,
+                   0}}, {{0, 0}, {9, 6}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 7->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0,
+                   1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 7}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 8->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0,
+                   0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 8}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 9->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 9}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 10->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 10}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 11->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 11}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 12->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 12}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 13->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 13}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 14->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 14}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 15->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 15}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 16->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 16}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 17->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 17}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 18->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 18}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 19->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 19}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 20->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0, 
+                  0}, {0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 1, 0, 1, 0, 1, 
+                  0}}, {{0, 0}, {9, 20}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}], 21->
+                
+                GraphicsBox[
+                 RasterBox[{{1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1,
+                   1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 
+                  1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1,
+                   0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 
+                  0}, {1, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 
+                  1}, {0, 1, 0, 1, 0, 1, 0, 1, 0}}, {{0, 0}, {9, 21}}, {0, 1}],
+                 Frame->Automatic,
+                 FrameLabel->{None, None},
+                 FrameTicks->{{None, None}, {None, None}},
+                 GridLinesStyle->Directive[
+                   GrayLevel[0.5, 0.4]],
+                 
+                 Method->{
+                  "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+                   Automatic}]}, Dynamic[$CellContext`i19$$],
+                Alignment->Automatic,
+                BaseStyle->"ListAnimateCore",
+                ImageSize->All,
+                TransitionDirection->Horizontal,
+                TransitionDuration->0.5,
+                TransitionEffect->Automatic],
+               Identity,
+               Editable->True,
+               Selectable->True],
+              ImageMargins->10],
+             Deployed->False,
+             StripOnInput->False,
+             ScriptLevel->0,
+             GraphicsBoxOptions->{PreserveImageOptions->True},
+             Graphics3DBoxOptions->{PreserveImageOptions->True}],
+            Identity,
+            Editable->False,
+            Selectable->False],
+           Alignment->{Left, Center},
+           Background->GrayLevel[1],
+           Frame->1,
+           FrameStyle->GrayLevel[0, 0.2],
+           ItemSize->Automatic,
+           StripOnInput->False]}
+        },
+        AutoDelete->False,
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Top}}, 
+          "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+          "RowsIndexed" -> {}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.7], {
+             Offset[0.5599999999999999]}, 
+            Offset[0.7]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.4], {
+             Offset[0.8]}, 
+            Offset[0.4]}, "RowsIndexed" -> {}}], If[
+        And[
+         CurrentValue["NotebookSelected"], 
+         CurrentValue["SelectionOver"]], 
+        Manipulate`Dump`ReadControllerState[
+         Map[Manipulate`Dump`updateOneVar[#, 
+           CurrentValue["PreviousFormatTime"], 
+           CurrentValue["CurrentFormatTime"]]& , {
+           
+           Manipulate`Dump`controllerLink[{$CellContext`i19$$, \
+$CellContext`i19$14785$$}, "X1", 
+            If["DefaultAbsolute", True, "JB1"], False, {1, 21, 1}, 21, 1.]}], 
+         CurrentValue[{
+          "ControllerData", {
+           "Gamepad", "Joystick", "Multi-Axis Controller"}}], {}]],
+       ImageSizeCache->{391., {242.25, 248.25}}],
+      DefaultBaseStyle->{},
+      FrameMargins->{{5, 5}, {5, 5}}],
+     BaselinePosition->Automatic,
+     ImageMargins->0],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "ListAnimate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Print",
+ CellChangeTimes->{3.831189156980197*^9, 3.8311892142600927`*^9, 
+  3.8311892456539755`*^9},ExpressionUUID->"4b1445db-86fa-4354-8ec9-\
+26c17e6d3073"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NextConfig", "[", 
+   RowBox[{"Actual_List", ",", "Regla_List"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"aux", ",", "l", ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"l", "=", 
+      RowBox[{"Length", "[", "Actual", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Se", " ", "tratan", " ", "de", " ", "manera", " ", "especial", " ", 
+       "los", " ", "casos", " ", "de", " ", "configuraci\[OAcute]n", " ", 
+       "vac\[IAcute]a", " ", "y", " ", "configuraci\[OAcute]n", " ", "con", 
+       " ", "una", " ", "sola", " ", "c\[EAcute]lula"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"l", "\[Equal]", "0"}], ",", 
+       RowBox[{"Return", "[", 
+        RowBox[{"{", "}"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"l", "\[Equal]", "1"}], ",", 
+       RowBox[{"Return", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{"Regla", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", "_"}], "}"}]}], "]"}], 
+          "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "4"}], "]"}], "]"}], "}"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"En", " ", "otro", " ", "caso"}], ",", " ", 
+       RowBox[{
+       "se", " ", "calculan", " ", "de", " ", "manera", " ", "separada", " ", 
+        "la", " ", "primera", " ", "componente", " ", "y", " ", "la", " ", 
+        "\[UAcute]ltima"}], ",", " ", 
+       RowBox[{
+       "y", " ", "el", " ", "resto", " ", "mediante", " ", "un", " ", 
+        "bucle"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"aux", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"aux", ",", 
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{"Regla", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", "l", "]"}], "]"}], ",", 
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", "_"}], "}"}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "4"}], "]"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "2"}], ",", 
+       RowBox[{"i", "<", "l"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"aux", ",", 
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{"Regla", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", "-", "1"}], "]"}], "]"}], ",", 
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", 
+              RowBox[{"Actual", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", "+", "1"}], "]"}], "]"}], ",", "_"}], "}"}]}], 
+           "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "4"}], "]"}], "]"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"aux", ",", 
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{"Regla", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", 
+              RowBox[{"l", "-", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", "l", "]"}], "]"}], ",", 
+            RowBox[{"Actual", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", "_"}], "}"}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "4"}], "]"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "aux", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8310168524346776`*^9, 3.8310169327572165`*^9}, {
+  3.831017468512306*^9, 3.831017472708723*^9}, {3.831017520592265*^9, 
+  3.831017722251781*^9}, {3.83118846940615*^9, 3.831188573964576*^9}, {
+  3.831188604073504*^9, 3.831188645612481*^9}, {3.8311886838885403`*^9, 
+  3.8311887388045645`*^9}, {3.8311889370022125`*^9, 
+  3.831189051878558*^9}},ExpressionUUID->"0d3baa23-e555-4c27-b662-\
+8786cc3063c8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NextConfig", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+    RowBox[{"WolframNumToList", "[", "54", "]"}]}], "]"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Ejemplo", " ", "de", " ", "funcionamiento", " ", "para", " ", "una", " ", 
+    "configuraci\[OAcute]n", " ", "sencilla", " ", "y", " ", "la", " ", 
+    "regla", " ", "54"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8310177494074717`*^9, 3.8310177707911353`*^9}, {
+  3.831017809613826*^9, 3.8310178100882173`*^9}, {3.8311887817452817`*^9, 
+  3.831188789273267*^9}, {3.8311890842927012`*^9, 
+  3.8311891127210445`*^9}},ExpressionUUID->"07522213-5706-4225-8519-\
+87e0abd3f420"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "1", ",", "1", ",", "1", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.831017772065807*^9, 3.8310178107608213`*^9, 
+  3.831188743589114*^9, 
+  3.8311887905971956`*^9},ExpressionUUID->"02dccf8d-a588-4b83-9cfd-\
+2d2aa8a0fbb2"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframNumToList", "[", "Regla_Integer", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"res", ",", "res2", ",", "aux"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"res", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"aux", "=", "Regla"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Para", " ", "convertir", " ", "la", " ", "regla", " ", "a", " ", "una",
+        " ", "lista", " ", "se", " ", "emplea", " ", "un", " ", 
+       "m\[EAcute]todo", " ", "de", " ", "conversi\[OAcute]n", " ", "de", " ",
+        "decimal", " ", "a", " ", "binario"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"aux", "\[GreaterEqual]", "2"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"PrependTo", "[", 
+         RowBox[{"res", ",", 
+          RowBox[{"Mod", "[", 
+           RowBox[{"aux", ",", "2"}], "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"aux", " ", "=", " ", 
+         RowBox[{"Quotient", "[", 
+          RowBox[{"aux", ",", "2"}], "]"}]}]}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"PrependTo", "[", 
+      RowBox[{"res", ",", "aux"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{
+       "En", " ", "caso", " ", "de", " ", "que", " ", "la", " ", "regla", " ",
+         "haya", " ", "quedado", " ", "representada", " ", "con", " ", 
+        "menos", " ", "de", " ", "8", " ", "d\[IAcute]gitos"}], ",", " ", 
+       RowBox[{
+       "se", " ", "a\[NTilde]aden", " ", "ceros", " ", "a", " ", "la", " ", 
+        "izquierda", " ", "hasta", " ", "que", " ", "se", " ", "alcancen", 
+        " ", "los", " ", "8", " ", "d\[IAcute]gitos"}]}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "res", "]"}], "<", "8"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"PrependTo", "[", 
+        RowBox[{"res", ",", "0"}], "]"}]}], "\[IndentingNewLine]", "]"}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"Para", " ", "concluir"}], ",", " ", 
+       RowBox[{
+       "se", " ", "a\[NTilde]aden", " ", "a", " ", "una", " ", "lista", " ", 
+        "las", " ", "8", " ", "componentes", " ", "de", " ", "la", " ", 
+        "funci\[OAcute]n", " ", "de", " ", "transici\[OAcute]n"}]}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"res2", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "8", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "7", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "0", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "6", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "1", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "5", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "4", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "1", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "0", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"res2", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "1", ",", 
+         RowBox[{"res", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res2", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8310142494575787`*^9, 3.831014309151128*^9}, {
+  3.83101441955378*^9, 3.831014449981127*^9}, {3.831014847831174*^9, 
+  3.831014908359927*^9}, {3.831015094590222*^9, 3.8310151212359695`*^9}, {
+  3.8310152667325144`*^9, 3.8310153588734336`*^9}, {3.831015545448123*^9, 
+  3.8310155539712195`*^9}, {3.831015605655199*^9, 3.8310156647135077`*^9}, {
+  3.831015719536066*^9, 3.8310158822586603`*^9}, {3.83101591717614*^9, 
+  3.8310159612782135`*^9}, {3.8310162768272033`*^9, 3.831016284519764*^9}, {
+  3.8311881628364863`*^9, 
+  3.8311883097704372`*^9}},ExpressionUUID->"f906ae5d-4d94-4c27-81f5-\
+36f6fa72fa79"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframNumToList", "[", "54", "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Ejemplo", " ", "de", " ", "funcionamiento", " ", "de", " ", "la", " ", 
+    "funci\[OAcute]n", " ", "para", " ", "la", " ", "regla", " ", "54"}], " ",
+    "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8310153622913637`*^9, 3.83101537227942*^9}, {
+  3.8310156729103527`*^9, 3.831015685172373*^9}, {3.831015890086793*^9, 
+  3.8310158909205527`*^9}, {3.831188327903182*^9, 
+  3.8311883437870264`*^9}},ExpressionUUID->"e73998d4-6488-4e84-97e6-\
+d8f198d39142"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.831015373657946*^9, 3.8310155596043196`*^9, {3.8310156585462484`*^9, 
+   3.831015685594054*^9}, {3.8310158874821014`*^9, 3.8310159202722073`*^9}, 
+   3.8310159671231346`*^9, 
+   3.8311887518132625`*^9},ExpressionUUID->"6e345a92-6856-47cc-b28a-\
+af52fdc75078"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.8310196988658032`*^9, 
+  3.831019699811144*^9}},ExpressionUUID->"4dd61164-fd59-4c6b-974b-\
+dae3d907510e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.0 para Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 203, 3, 96, "Title",ExpressionUUID->"47530844-c130-4deb-bcf4-3896841e971c"],
+Cell[786, 27, 236, 7, 143, "Section",ExpressionUUID->"d7535be3-4529-464f-9e64-3945863bcdd9"],
+Cell[CellGroupData[{
+Cell[1047, 38, 233, 4, 53, "Section",ExpressionUUID->"65dc89fe-5751-4141-8301-9e487e864033"],
+Cell[CellGroupData[{
+Cell[1305, 46, 431, 8, 79, "Subsection",ExpressionUUID->"9a761e7d-8294-4376-ad3e-1d91667981d5"],
+Cell[1739, 56, 3660, 78, 384, "Input",ExpressionUUID->"7c16aa9c-34d2-4823-a2fc-35535ff398f6"],
+Cell[CellGroupData[{
+Cell[5424, 138, 725, 17, 28, "Input",ExpressionUUID->"da655f31-b0c8-4179-b80f-fa41b1b1262e"],
+Cell[6152, 157, 23890, 488, 520, "Print",ExpressionUUID->"ef718431-213b-4fcd-a454-6eaac81d1c81"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30079, 650, 572, 15, 28, "Input",ExpressionUUID->"53ba9877-b088-498c-b446-b76c613ca9e1"],
+Cell[30654, 667, 23852, 487, 520, "Print",ExpressionUUID->"4b1445db-86fa-4354-8ec9-26c17e6d3073"]
+}, Open  ]],
+Cell[54521, 1157, 4797, 120, 438, "Input",ExpressionUUID->"0d3baa23-e555-4c27-b662-8786cc3063c8"],
+Cell[CellGroupData[{
+Cell[59343, 1281, 735, 16, 28, "Input",ExpressionUUID->"07522213-5706-4225-8519-87e0abd3f420"],
+Cell[60081, 1299, 278, 6, 32, "Output",ExpressionUUID->"02dccf8d-a588-4b83-9cfd-2d2aa8a0fbb2"]
+}, Open  ]],
+Cell[60374, 1308, 5405, 130, 773, "Input",ExpressionUUID->"f906ae5d-4d94-4c27-81f5-36f6fa72fa79"],
+Cell[CellGroupData[{
+Cell[65804, 1442, 567, 12, 28, "Input",ExpressionUUID->"e73998d4-6488-4e84-97e6-d8f198d39142"],
+Cell[66374, 1456, 969, 24, 32, "Output",ExpressionUUID->"6e345a92-6856-47cc-b28a-af52fdc75078"]
+}, Open  ]],
+Cell[67358, 1483, 257, 5, 105, "Input",ExpressionUUID->"4dd61164-fd59-4c6b-974b-dae3d907510e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
